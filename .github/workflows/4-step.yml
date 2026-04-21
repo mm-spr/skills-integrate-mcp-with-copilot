@@ -20,7 +20,7 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@f7e5b28a894634a98b29a4b5802816df69e8c499
 
 
   post_review_content:
@@ -35,24 +35,24 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
 
       - name: Get response templates
-        uses: actions/checkout@v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
           ref: v0.7.0
 
       - name: Create comment - step finished - final review next
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@7dbf18ef5fcf2ae56cf51ebca6b5cc225fb41e5a
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
           file: exercise-toolkit/markdown-templates/step-feedback/lesson-review.md
 
       - name: Create comment - add review content
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@7dbf18ef5fcf2ae56cf51ebca6b5cc225fb41e5a
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -66,7 +66,7 @@ jobs:
   finish_exercise:
     name: Finish Exercise
     needs: [find_exercise, post_review_content]
-    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.7.1
+    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@09fa94f97127fbd0a9c99e25e1505043791cc451
     with:
       issue-url: ${{ needs.find_exercise.outputs.issue-url }}
       exercise-title: "Integrate MCP with GitHub Copilot"

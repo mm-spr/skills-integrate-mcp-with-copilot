@@ -18,7 +18,7 @@ jobs:
     if: |
       !github.event.repository.is_template
     name: Start Exercise
-    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.7.3
+    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@fb55bbbfb8cd7b63862f741ae2e483f81fea3d56
     with:
       exercise-title: "Integrate MCP with Copilot"
       intro-message: "This exercise will help you learn how to expand GitHub Copilot's capabilities with Model Context Protocol (MCP)."
@@ -33,17 +33,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
 
       - name: Get response templates
-        uses: actions/checkout@v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
           ref: v0.7.0
 
       - name: Create comment - add step content
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@7dbf18ef5fcf2ae56cf51ebca6b5cc225fb41e5a
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -52,7 +52,7 @@ jobs:
             full_repo_name: ${{ github.repository }}
 
       - name: Create comment - watching for progress
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@7dbf18ef5fcf2ae56cf51ebca6b5cc225fb41e5a
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}

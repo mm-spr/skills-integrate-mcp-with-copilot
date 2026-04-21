@@ -3,14 +3,14 @@
   "image": "mcr.microsoft.com/devcontainers/python:3.13-bookworm",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "latest"
+      "version": "22.14.0"
     },
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "moby": false
     }    
   },
   "forwardPorts": [8000],
-  "postCreateCommand": "pip install -r requirements.txt",
+  "postCreateCommand": "python -m pip install --requirement requirements.txt",
   "customizations": {
     "vscode": {
       "extensions": [
