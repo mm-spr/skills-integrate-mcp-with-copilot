@@ -1,0 +1,22 @@
+name: Verify pinned dependencies
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify-pins:
+    name: Verify pinned dependencies and actions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+
+      - name: Validate pinned dependencies and actions
+        run: bash scripts/check-pinned-assets.sh
